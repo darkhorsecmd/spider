@@ -12,7 +12,6 @@ import time
 from urllib import request
 from urllib.parse import quote
 from lxml import etree
-from html import unescape
 
 
 class GsExtractor(object):

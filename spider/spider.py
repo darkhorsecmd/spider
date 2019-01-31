@@ -5,24 +5,34 @@ from urllib import request
 from lxml import etree
 from gooseeker import GsExtractor
 from urllib import parse
+from webCon import webCon
 import os
 import uuid
+import time
 
 APPKEY = ""
+web = webCon()  # 实例化一个 webCon对象，下面所有的获取数据都从里面的方法得到
 
+
+# def webCon(url,rule):
+#     conn = request.urlopen(url)
+#     doc = etree.HTML(conn.read())
+#     extra = GsExtractor()  # 生成xsltExtractor对象
+#     extra.setXsltFromAPI(APIKey=APPKEY, theme=rule)  # 获取规则文件，并读取
+#     content = extra.extract(doc)  # 获取教师url 解析到的xml文件
+#     return content
 
 def parseDetail(url, rule):
-    conn = request.urlopen(url)
-    doc = etree.HTML(conn.read())
-    extra = GsExtractor()  # 生成xsltExtractor对象
-    extra.setXsltFromAPI(APIKey=APPKEY, theme=rule)  # 获取规则文件，并读取
-    pageDetail = extra.extract(doc)  # 获取教师url 解析到的xml文件
+    pageDetail = web.con_ThenGetContent(url, rule)
+    xpathCss_selector_Xml_Content = web.getextra().getXslt()  # 截取的xpath的xml规则文件，后面会保存到数据库，这里先不处理
 
     # 写入文件，查看一下
     id = uuid.uuid1()
     file_name = os.path.abspath(os.path.dirname(__file__)) + "\\xmlUnit\\linkList_detail\\" + str(uuid.uuid1()) + ".xml"
     open(file_name, "wb").write(pageDetail)
 
+    #待加入 代理池，这里先休眠
+    time.sleep(2)
 
     pass
 
@@ -31,15 +41,9 @@ def Myparse(url, key):  # url可以作为前缀拼凑成完整的网页链接
     linksParseRule = key  # 教师list的url 的解析规则
     PageDetailRule = key + "_detail"  # 每一个教师信息的解析规则
     # 访问并读取网页内容
-    conn = request.urlopen(url)
-    doc = etree.HTML(conn.read())
 
-    extra = GsExtractor()  # 生成xsltExtractor对象
-    extra.setXsltFromAPI(APIKey=APPKEY, theme=linksParseRule)  # 获取规则文件，并读取
-    xpathCss_selector_Xml_Content = extra.getXslt()  # 截取的xpath的xml规则文件
-    # Unicode_PageResult = extra.extract(doc)  # 获取教师页所有链接
-    # pageResult = Unicode_PageResult.encode('utf-8')
-    pageResult = extra.extract(doc)  # 获取教师页所有链接
+    pageResult = web.con_ThenGetContent(url, linksParseRule)  # 获取教师页所有链接
+    xpathCss_selector_Xml_Content = web.getextra().getXslt()  # 截取的xpath的xml规则文件
     # 写入文件，查看一下
     id = uuid.uuid1()
     file_name = os.path.abspath(os.path.dirname(__file__)) + "\\xmlUnit\\linkList\\" + str(uuid.uuid1()) + ".xml"
@@ -52,7 +56,6 @@ def Myparse(url, key):  # url可以作为前缀拼凑成完整的网页链接
     # print(urlLinkList)
     for urlIndex in range(len(urlLinkList)):
         detailPageUrl = parse.urljoin(url, urlLinkList[urlIndex])
-        # print(detailPageUrl)
         parseDetail(detailPageUrl, PageDetailRule)
 
 
@@ -71,6 +74,8 @@ if __name__ == '__main__':
     # 给全局变量APPKEY 赋值
     APPKEY = readxml.get_RootAttribute("appkey")
 
+    # 配置连接属性
+    web.setAppkey(APPKEY)
     #########################################以上为必须要执行的预备动作,读的配置文件
     #
     # print(readcsv.getdic())  #dict
