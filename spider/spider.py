@@ -10,18 +10,9 @@ import os
 import uuid
 import time
 
-
 APPKEY = ""
 web = webCon()  # 实例化一个 webCon对象，下面所有的获取数据都从里面的方法得到
 
-
-# def webCon(url,rule):
-#     conn = request.urlopen(url)
-#     doc = etree.HTML(conn.read())
-#     extra = GsExtractor()  # 生成xsltExtractor对象
-#     extra.setXsltFromAPI(APIKey=APPKEY, theme=rule)  # 获取规则文件，并读取
-#     content = extra.extract(doc)  # 获取教师url 解析到的xml文件
-#     return content
 
 def parseDetail(url, rule):
     pageDetail = web.con_ThenGetContent(url, rule)
@@ -32,7 +23,7 @@ def parseDetail(url, rule):
     file_name = os.path.abspath(os.path.dirname(__file__)) + "\\xmlUnit\\linkList_detail\\" + str(uuid.uuid1()) + ".xml"
     open(file_name, "wb").write(pageDetail)
 
-    #待加入 代理池，这里先休眠
+    # 待加入 代理池，这里先休眠
     time.sleep(2)
 
     pass
