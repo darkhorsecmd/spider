@@ -21,7 +21,7 @@ def parseDetail(url, rule):
     id = uuid.uuid1()
     file_name = os.path.abspath(os.path.dirname(__file__)) + "\\xmlUnit\\linkList_detail\\" + str(uuid.uuid1()) + ".xml"
     open(file_name, "wb").write(pageDetail)
-
+    print(url+"写入完毕")
     # 待加入 代理池，这里先休眠
     time.sleep(1)
 

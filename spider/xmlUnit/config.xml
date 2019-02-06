@@ -5,4 +5,7 @@
 	<db_passwd>xqweXQWE</db_passwd>
 	<db_name>researcher</db_name>
 	<db_tablename>basic_info</db_tablename>
+    <!-- 下面两个参数是通过 https://center.abuyun.com/#/cloud/http-proxy/tunnel/lists  HTTP隧道服务器 动态方案-->
+	<proxyUser>xxx</proxyUser>
+    <proxyPass>XXX</proxyPass>
 </startconfig>
