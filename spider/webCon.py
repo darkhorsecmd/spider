@@ -1,7 +1,7 @@
 from gooseeker import GsExtractor
 from urllib import request
 from lxml import etree
-
+from tools.RandomUserAgent import RandomUserAgent
 
 class webCon:
     def __init__(self):

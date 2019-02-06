@@ -10,6 +10,7 @@ import os
 import uuid
 import time
 
+
 APPKEY = ""
 web = webCon()  # 实例化一个 webCon对象，下面所有的获取数据都从里面的方法得到
 
