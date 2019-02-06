@@ -6,6 +6,7 @@ from xmlUnit.ReadXML import ReadXml
 
 
 class IpAgency:
+    #需要 xmlUnit下的 config.xml 里面两个元素的配置
     def __init__(self, configPath):
         self.readxml = ReadXml(configPath)
         # 代理服务器
