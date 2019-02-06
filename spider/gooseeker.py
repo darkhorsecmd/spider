@@ -8,7 +8,6 @@
 # released by 集搜客(http://www.gooseeker.com) on May 18, 2016
 # github: https://github.com/FullerHua/jisou/core/gooseeker.py
 
-import time
 from urllib import request
 from urllib.parse import quote
 from lxml import etree

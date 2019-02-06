@@ -1,17 +1,16 @@
 from xmlUnit import ReadXML
 from xmlUnit import ReadTreeXML
 from csvUnit import startReadCSV
-from urllib import request
-from lxml import etree
-from gooseeker import GsExtractor
 from urllib import parse
 from webCon import webCon
+from tools.MoveFIle import MoveFile
 import os
 import uuid
 import time
 
 APPKEY = ""
 web = webCon()  # 实例化一个 webCon对象，下面所有的获取数据都从里面的方法得到
+moveFile = MoveFile()  # 移动 csvUnit/csvlist下所有文件 到 csvUnit/csv_Last ；移动 xmlUnit/linklist下所有文件 到 xmlUnit/linkList_Last
 
 
 def parseDetail(url, rule):
@@ -24,7 +23,7 @@ def parseDetail(url, rule):
     open(file_name, "wb").write(pageDetail)
 
     # 待加入 代理池，这里先休眠
-    time.sleep(2)
+    time.sleep(1)
 
     pass
 
@@ -79,3 +78,5 @@ if __name__ == '__main__':
             # 每一个link 后面将作为平凑的前缀
             link = listlinks[linkIndex][0]
             Myparse(link, keyname)
+    moveFile.move_csvlistTo_Last()
+    moveFile.move_linkListTo_Last()
