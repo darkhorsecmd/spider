@@ -21,7 +21,7 @@ class webCon:
             doc = etree.HTML(data)
             # doc = etree.HTML(conn.read())
             self.extra.setXsltFromAPI(APIKey=self.APPKEY, theme=rule)  # 获取规则文件，并读取
-            content = self.extra.extract(doc)  # 获取教师url 解析到的xml文件
+            content = self.extra.extract(doc)  # 更具xslt 解析的内容，xml 字节格式
             return content
         except BaseException:
             return b"conect error"

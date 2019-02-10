@@ -9,27 +9,31 @@ class DataUnit:
     host = read.get_ItemValue("esdb_host")  # 配置静态esdb 数据库地址
 
     def __init__(self):
-        self.es = Elasticsearch(hosts="127.0.0.1")
+        self.es = Elasticsearch(hosts=DataUnit.host)
         self.index = ""
         self.doc_type = ""
 
-    #需要显示调用此函数
-    def createIndex(self,index):
-        self.index=index
+    # 需要显示调用此函数，index format：学校名_学院名
+    def createIndex(self, index):
+        self.index = index
         result = self.es.indices.create(index=self.index)
         if result["acknowledged"] is not True:
             print("创建index失败，你可以尝试删除该index，然后再运行此处代码")
             exit(1)
-    #需要显示调用
+
+    # 需要显示调用，doc_type format：学院名
     def setDoctype(self, doc_type):
         # 插入数据时候用得到；说明下6x之后一个index对应一个type
         self.doc_type = doc_type
-    #需要显示调用
+
+    # 需要显示调用
     def insertData(self, data):
         if self.doc_type != "":
             self.es.index(index=self.index, doc_type=self.doc_type, body=data)
         else:
             print('Please ensure set "doc_type"')
+
+
 
 
 if __name__ == '__main__':

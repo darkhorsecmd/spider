@@ -30,6 +30,8 @@ def Myparse(url, key):  # url可以作为前缀拼凑成完整的网页链接
     # 访问并读取网页内容
 
     pageResult = web.con_ThenGetContent(url, linksParseRule)  # 获取教师页所有链接
+    print(type(pageResult))
+    pass
     xpathCss_selector_Xml_Content = web.getextra().getXslt()  # 截取的xpath的xml规则文件
     # 写入文件，查看一下
     id = uuid.uuid1()
@@ -58,7 +60,6 @@ if __name__ == '__main__':
 
     # csv 开始读，对象可返回 tuple（key） 和 dict
     readcsv.startReadUrlList()
-
     # 给全局变量APPKEY 赋值
     APPKEY = readxml.get_RootAttribute("appkey")
 
@@ -68,11 +69,11 @@ if __name__ == '__main__':
 
     #实例化一个存储到elasticsearch 对象
     dataUnit = DataUnit()
-    #########################################以上为必须要执行的预备动作,读的配置文件
+    #########################################以上为必须要执行的预备动作
     #
 
     for fileNameIndex in range(len(readcsv.getKeyFileName())):
-        keyname = readcsv.getKeyFileName()[fileNameIndex]
+        keyname = readcsv.getKeyFileName()[fileNameIndex]  #keyname为"学校名_学院名"
         listlinks = readcsv.getdic()[keyname]
         for linkIndex in range(len(listlinks)):
             link = listlinks[linkIndex][0]
