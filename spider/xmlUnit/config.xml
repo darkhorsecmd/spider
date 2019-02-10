@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <startconfig appkey="e346796c93c6ba7441636666e401e5cc">
-	<db_host>127.0.0.1</db_host>
-	<db_user>root</db_user>
-	<db_passwd>xqweXQWE</db_passwd>
-	<db_name>researcher</db_name>
-	<db_tablename>basic_info</db_tablename>
+    <db_host>127.0.0.1</db_host>
+    <db_user>root</db_user>
+    <db_passwd>xqweXQWE</db_passwd>
+    <db_name>researcher</db_name>
+    <db_tablename>basic_info</db_tablename>
     <!-- 下面两个参数是通过 https://center.abuyun.com/#/cloud/http-proxy/tunnel/lists  HTTP隧道服务器 动态方案-->
-	<proxyUser>xxx</proxyUser>
-    <proxyPass>XXX</proxyPass>
+    <proxyUser>H24P351E4Q74R57D</proxyUser>
+    <proxyPass>BE0DBA04753B272A</proxyPass>
+    <!--下面一个参数是elasticsearch 配置参数-->
+    <esdb_host>127.0.0.1</esdb_host>
 </startconfig>

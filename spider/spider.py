@@ -4,9 +4,9 @@ from csvUnit import startReadCSV
 from urllib import parse
 from webCon import webCon
 from tools.MoveFIle import MoveFile
+from tools.DataUnit import DataUnit
 import os
 import uuid
-import time
 
 APPKEY = ""
 web = webCon()  # 实例化一个 webCon对象，下面所有的获取数据都从里面的方法得到
@@ -22,10 +22,6 @@ def parseDetail(url, rule):
     file_name = os.path.abspath(os.path.dirname(__file__)) + "\\xmlUnit\\linkList_detail\\" + str(uuid.uuid1()) + ".xml"
     open(file_name, "wb").write(pageDetail)
     print(url+"写入完毕")
-    # 待加入 代理池，这里先休眠
-    time.sleep(1)
-
-    pass
 
 
 def Myparse(url, key):  # url可以作为前缀拼凑成完整的网页链接
@@ -53,6 +49,7 @@ def Myparse(url, key):  # url可以作为前缀拼凑成完整的网页链接
 if __name__ == '__main__':
     # 配置文件路径
     configFileName = os.path.abspath(os.path.dirname(__file__)) + "\\xmlUnit\\config.xml"
+    # configFileName = os.path.abspath(os.path.dirname(__file__))
     csvFilePath = os.path.dirname(__file__) + "/csvUnit"
 
     # xml 和csv 实例化
@@ -67,15 +64,17 @@ if __name__ == '__main__':
 
     # 配置连接属性
     web.setAppkey(APPKEY)
+
+
+    #实例化一个存储到elasticsearch 对象
+    dataUnit = DataUnit()
     #########################################以上为必须要执行的预备动作,读的配置文件
     #
-    # print(readcsv.getdic())  #dict
-    # print(readcsv.getKeyFileName())  ## key
+
     for fileNameIndex in range(len(readcsv.getKeyFileName())):
         keyname = readcsv.getKeyFileName()[fileNameIndex]
         listlinks = readcsv.getdic()[keyname]
         for linkIndex in range(len(listlinks)):
-            # 每一个link 后面将作为平凑的前缀
             link = listlinks[linkIndex][0]
             Myparse(link, keyname)
     moveFile.move_csvlistTo_Last()

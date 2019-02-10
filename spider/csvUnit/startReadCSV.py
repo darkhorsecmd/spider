@@ -1,6 +1,6 @@
 import os
 import csv
-
+import tools.mkdir
 
 class startReadCSV:
     #需要传入 当前所在位置的 rootpath
@@ -14,6 +14,7 @@ class startReadCSV:
     def startReadUrlList(self):
         for index in range(len(self.ListFiles)): #每一个文件夹
             dir = self.path + "/" + self.ListFiles[index]  # E:/19年文件/毕设爬虫/code/Test/Test CSV/csvlist/nju.edu.cn
+
             files = os.listdir(dir)  # 依次进入每一个文件夹目录
             for f_index in range(len(files)): #每一个文件夹下的文件
                 file_name = (os.path.splitext(files[f_index])[0])#获取单个文件名
