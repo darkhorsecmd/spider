@@ -4,6 +4,7 @@ from gooseeker import GsExtractor
 from lxml import etree
 from tools.RandomUserAgent import RandomUserAgent
 from tools.IpAgency import IpAgency
+import time
 
 class webCon:
     def __init__(self):
@@ -17,6 +18,8 @@ class webCon:
         try:
             rd = RandomUserAgent()
             headers = {"User-Agent": rd.get_RanDomAgent()}
+            #蛋疼的代理IP，等有机会自己搞一个，这里休眠一下，0.5秒 再请求应该是够的，错了再说！！！
+            time.sleep(0.5)
             data = requests.get(url=url, headers=headers,timeout=500,proxies=self.Ipagency.getIpProxy()).text
             doc = etree.HTML(data)
             # doc = etree.HTML(conn.read())
