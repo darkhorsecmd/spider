@@ -3,11 +3,6 @@ import xml.dom.minidom
 import os
 
 
-# linkPath = os.path.dirname(__file__) + "/Temp"
-# linkNamePathList = os.listdir(linkPath)
-# for linkName in linkNamePathList:
-#     path_LinkName = linkPath + "/"+linkName
-
 
 class ReadTreeXml:
     def __init__(self, rootPath):
@@ -25,7 +20,7 @@ class ReadTreeXml:
 
     def __parseUrl(self):  # 待解析每一个 listurl
         for eachlink in self.linkNamePathList:
-            path_pre = self.linkPath + "/" + eachlink
+            path_pre = self.linkPath + "\\" + eachlink
             self.__myparse(path_pre)
 
     def getUrlList(self):

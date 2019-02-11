@@ -11,6 +11,7 @@ class MoveFile():
         xmldirs = os.listdir(xmlSrcPath)
         for file in xmldirs:
             shutil.move(xmlSrcPath+"\\"+file,xmlDesPath+"\\"+file)
+        print("from linkList to linkList_Last move ok!")
 
     def move_csvlistTo_Last(self):
         csvSrcPath = self.rootPath + "\\csvUnit\\csvlist"
@@ -18,6 +19,7 @@ class MoveFile():
         csvdirs = os.listdir(csvSrcPath)
         for file in csvdirs:
             shutil.move(csvSrcPath+"\\"+file,csvDesPath+"\\"+file)
+        print("from csvlist to csvlist_Last move ok!")
 
 if __name__ == '__main__':
 

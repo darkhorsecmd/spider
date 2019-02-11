@@ -23,7 +23,7 @@ class startReadCSV:
                 self.file_namelist.append(self.ListFiles[index] + "_" + file_name)  # 格式："学校名_学院名"存储到list中
                 links = []  # 初始化
                 filePath_name = dir + "/" + files[
-                    f_index]  # 文件路径包括文件后缀   E:/19年文件/毕设爬虫/code/Test/Test CSV/csvlist/nju.edu.cn/im.nju.edu.cn.csv
+                    f_index]  # 文件路径包括文件后缀   E:/19年文件/毕设爬虫/code/Test/Test CSV/csvlist/南京大学/信息管理学院.csv
                 csvFile = open(filePath_name, "r")
                 reader = csv.reader(csvFile)
                 for line in reader:  # 文件内的每一行
@@ -45,6 +45,6 @@ if __name__ == '__main__':
     reads = startReadCSV(os.path.dirname(__file__))
     reads.startReadUrlList()
     FileNameTuple = reads.getKeyFileName()
-    print(FileNameTuple[0])
+    print(FileNameTuple[0])  #南京大学_信息管理学院
     dic = reads.getdic()
-    print(dic[FileNameTuple[0]])  # {():[[],[]]}
+    print(dic[FileNameTuple[0]])  # {():[[],[]]} #csv文件里面的所有listurl链接
