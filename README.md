@@ -50,3 +50,5 @@
 * ## 你要的结果
     * ***存放目录*** spider\spider\xmlUnit\linkList_detail     
     * ***存放形式*** xml文件形式，命名方式：学校名_学院名_detail+UUID.xml           
+---
+* ## 如果您觉得我写的项目对您有益，麻烦点一下页面顶端的 star按钮，或者您也可以fork我的这个开源项目，感谢！
