@@ -1,6 +1,6 @@
-#spider各大学校教师信息公共爬虫
+# spider各大学校教师信息公共爬虫
 
-* ##配置文件
+* ## 配置文件
     * ***目录***：spider\spider\xmlUnit\config.xml
     * **详细说明**
         * *属性*：'appkey'
@@ -15,7 +15,7 @@
             这里的'esdb_host'表示的意思是esdb的地址，这里暂时为本地地址
 ---
 
-* ##启动爬虫之前
+* ## 启动爬虫之前
     * ***目录***：spider\spider\csvUnit\csvlist\
     * **详细说明**
         * *制作教师链接list*
@@ -38,14 +38,14 @@
                 2. 第二个规则是为了获取教师详情页面，这里任意打开一个教师的页面：假设现在是 教授页面下的 陈雅 教授，http://im.nju.edu.cn/teacherinfo.do?mid=4&mmid=41&tid=96230ccb-cabb-11e4-af7e-005056a62f9a
                  ，**主题名写：学校_学院_detail**，这里的主题名为：南京大学_信息管理学院_detail，箱名随意，标签名 你自己看着取，后面这个每个标签名在获取到的xml文件中以tag存在
 ---
-* ##启动爬虫
+* ## 启动爬虫
     * ***目录***：spider\spider\spider.py
     * ***启动方式***: 右击运行该py文件就可以了
 ---    
-* ##爬取结束后
+* ## 爬取结束后
      * 程序会自动将 spider\spider\csvUnit\csvlist 文件夹下的所有文件夹移动到 spider\spider\csvUnit\csvlist_Last
      * 将spider\spider\xmlUnit\linkList 文件夹下的所有文件移到spider\spider\xmlUnit\linkList_Last
 ---
-* ##你要的结果
+* ## 你要的结果
     * ***存放目录*** spider\spider\xmlUnit\linkList_detail     
     * ***存放形式*** xml文件形式，命名方式：学校名_学院名_detail+UUID.xml           
