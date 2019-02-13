@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <startconfig appkey="e346796c93c6ba7441636666e401e5cc">
-    <!-- 下面两个参数是通过 https://center.abuyun.com/#/cloud/http-proxy/tunnel/lists  HTTP隧道服务器 动态方案-->
+    <!-- 下面四个参数是通过 https://center.abuyun.com/#/cloud/http-proxy/tunnel/lists  HTTP隧道服务器 动态方案，其中host 和port 一般不要动-->
+    <proxyHost>http-dyn.abuyun.com</proxyHost>
+    <proxyPort>9020</proxyPort>
     <proxyUser>HT1P7XLV403O0EUD</proxyUser>
     <proxyPass>40DDB02952BCEADA</proxyPass>
     <!--下面一个参数是elasticsearch 配置参数-->

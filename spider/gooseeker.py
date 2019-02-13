@@ -11,9 +11,15 @@
 from urllib import request
 from urllib.parse import quote
 from lxml import etree
+from xmlUnit import ReadXML
+import os
 
 
 class GsExtractor(object):
+    configFileName = os.path.abspath(os.path.dirname(__file__)) + "\\xmlUnit\\config.xml"
+    readxml = ReadXML.ReadXml(configFileName)
+    APIKey = readxml.get_RootAttribute("appkey")
+
     def _init_(self):
         self.xslt = ""
 
@@ -30,8 +36,8 @@ class GsExtractor(object):
         self.xslt = xsltStr
 
     # 通过GooSeeker API接口获得xslt
-    def setXsltFromAPI(self, APIKey, theme, middle=None, bname=None):
-        apiurl = "http://www.gooseeker.com/api/getextractor?key=" + APIKey + "&theme=" + quote(theme)
+    def setXsltFromAPI(self, theme, middle=None, bname=None):
+        apiurl = "http://www.gooseeker.com/api/getextractor?key=" + GsExtractor.APIKey + "&theme=" + quote(theme)
         if (middle):
             apiurl = apiurl + "&middle=" + quote(middle)
         if (bname):

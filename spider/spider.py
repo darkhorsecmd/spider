@@ -1,9 +1,9 @@
-from xmlUnit import ReadXML
 from xmlUnit import ReadTreeXML
 from csvUnit import startReadCSV
 from urllib import parse
 from webCon import webCon
 from tools.MoveFIle import MoveFile
+from tools.zhengze import zhengze
 import os
 import uuid
 
@@ -29,10 +29,11 @@ def Myparse(url, key):  # list页面的url可以作为前缀拼凑成完整的�
     # 开始取出 每一个教师的link规则
     linkListPath = os.path.abspath(os.path.dirname(__file__)) + "\\xmlUnit\\linkList"
     readXmlTree = ReadTreeXML.ReadTreeXml(linkListPath)
-    urlLinkList = readXmlTree.getUrlList() #linkList 文件夹下的所有文件当中的link 大列表
+    urlLinkList = readXmlTree.getUrlList()  # linkList 文件夹下的所有文件当中的link 大列表
     for urlIndex in range(len(urlLinkList)):
         detailPageUrl = parse.urljoin(url, urlLinkList[urlIndex])
         parseDetail(detailPageUrl, PageDetailRule)
+
 
 # 此函数用于处理 一个学院的所有的链接写入文件,同时存入linkList文件夹下面
 def parse_addLink(url, key):
@@ -47,34 +48,31 @@ def parse_addLink(url, key):
 
 
 if __name__ == '__main__':
-    # 配置文件路径
-    configFileName = os.path.abspath(os.path.dirname(__file__)) + "\\xmlUnit\\config.xml"
-    # configFileName = os.path.abspath(os.path.dirname(__file__))
+    # 配置csv文件路径
     csvFilePath = os.path.dirname(__file__) + "/csvUnit"
-
-    # xml 和csv 实例化
-    readxml = ReadXML.ReadXml(configFileName)
+    # csv 实例化
     readcsv = startReadCSV.startReadCSV(csvFilePath)
-
     # csv 开始读，对象可返回 tuple（key） 和 dict
     readcsv.startReadUrlList()
-
-    # 给全局变量APPKEY 赋值
-    APPKEY = readxml.get_RootAttribute("appkey")
-    # 配置连接属性
-    web.setAppkey(APPKEY)
+    # 实例化一个正则对象
+    zz = zhengze()
 
     # 实例化一个存储到elasticsearch 对象
     # dataUnit = DataUnit()
     #########################################以上为必须要执行的预备动作
     for fileNameIndex in range(len(readcsv.getKeyFileName())):
         keyname = readcsv.getKeyFileName()[fileNameIndex]  # keyname为"学校名_学院名"
+        scholl_name = zz.getSchollName(keyname)  # 获取学校名字
+        academy_name = zz.getAcademy(keyname)  # 获取学院名字
         listlinks = readcsv.getdic()[keyname]
         qianzhui = ""
         for linkIndex in range(len(listlinks)):
             link = listlinks[linkIndex][0]
             qianzhui = link  # 这个前缀只是为了下面的Myparse里面的url做拼接用
-            parse_addLink(link, keyname) #一下子就存储了一个学院的linklist
-        Myparse(qianzhui, keyname) #准备解析 linklist下面的所有链接
-        moveFile.move_linkListTo_Last()#解析完了，就将linklist下面的所有文件移到 linkList_Last文件夹下面
-    moveFile.move_csvlistTo_Last()
+            parse_addLink(link, keyname)  # 一下子就存储了一个学院的linklist
+        Myparse(qianzhui, keyname)  # 准备解析 linklist下面的所有链接
+        moveFile.move_linkListTo_Last()  # 解析完了，就将linklist下面的所有文件移到 linkList_Last文件夹下面
+    moveFile.move_csvlistTo_Last()  # 解析完了csvlist里面的链接，应该也要移动一下才对！
+
+    #退出浏览器
+    webCon.chrome.quit()
