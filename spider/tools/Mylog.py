@@ -5,6 +5,7 @@ import os
 import uuid
 
 
+#使用这个 需要传入一个函数名来 创建对象，依次调用
 class Mylog():
     path = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\Log\\"
 

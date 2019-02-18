@@ -41,10 +41,11 @@ def parse_addLink(url, key):
     pageResult = web.con_ThenGetContent(url, linksParseRule)  # 获取此url下的所有教师个人链接
     xpathCss_selector_Xml_Content = web.getextra().getXslt()  # 截取的xpath的xml规则文件
     # 写入文件，查看一下
-    id = uuid.uuid1()
-    file_name = os.path.abspath(os.path.dirname(__file__)) + "\\xmlUnit\\linkList\\" + key + str(
-        uuid.uuid1()) + ".xml"
-    open(file_name, "wb").write(pageResult)
+    if pageResult is not None:
+        id = uuid.uuid1()
+        file_name = os.path.abspath(os.path.dirname(__file__)) + "\\xmlUnit\\linkList\\" + key + str(
+            uuid.uuid1()) + ".xml"
+        open(file_name, "wb").write(pageResult)
 
 
 if __name__ == '__main__':
@@ -62,8 +63,8 @@ if __name__ == '__main__':
     #########################################以上为必须要执行的预备动作
     for fileNameIndex in range(len(readcsv.getKeyFileName())):
         keyname = readcsv.getKeyFileName()[fileNameIndex]  # keyname为"学校名_学院名"
-        scholl_name = zz.getSchollName(keyname)  # 获取学校名字
-        academy_name = zz.getAcademy(keyname)  # 获取学院名字
+        scholl_name = zz.getSchollName(keyname)  # 获取学校名字 前缀
+        academy_name = zz.getAcademy(keyname)  # 获取学院名字 后缀
         listlinks = readcsv.getdic()[keyname]
         qianzhui = ""
         for linkIndex in range(len(listlinks)):
@@ -74,5 +75,5 @@ if __name__ == '__main__':
         moveFile.move_linkListTo_Last()  # 解析完了，就将linklist下面的所有文件移到 linkList_Last文件夹下面
     moveFile.move_csvlistTo_Last()  # 解析完了csvlist里面的链接，应该也要移动一下才对！
 
-    #退出浏览器
+    # 退出浏览器
     webCon.chrome.quit()
