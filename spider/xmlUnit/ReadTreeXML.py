@@ -3,7 +3,7 @@ import xml.dom.minidom
 import os
 
 
-
+#仅仅用来解析出每一个学院csv文件的 教师链接，返回一个list
 class ReadTreeXml:
     def __init__(self, rootPath):
         self.linkPath = rootPath

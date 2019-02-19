@@ -96,7 +96,7 @@ class chromes():
 
     def get_html(self, url):
         self.driver.get(url)
-        print(self.driver.page_source)
+        # print(self.driver.page_source)
         return self.driver.page_source
 
     def quit(self):

@@ -53,7 +53,7 @@ if __name__ == '__main__':
     csvFilePath = os.path.dirname(__file__) + "/csvUnit"
     # csv 实例化
     readcsv = startReadCSV.startReadCSV(csvFilePath)
-    # csv 开始读，对象可返回 tuple（key） 和 dict
+    # csv 开始读，对象可返回 tuple（key） 和 dict  这里就直接读了csvlist文件夹下的所有大学 分别存了一个list
     readcsv.startReadUrlList()
     # 实例化一个正则对象
     zz = zhengze()
@@ -70,10 +70,10 @@ if __name__ == '__main__':
         for linkIndex in range(len(listlinks)):
             link = listlinks[linkIndex][0]
             qianzhui = link  # 这个前缀只是为了下面的Myparse里面的url做拼接用
-            parse_addLink(link, keyname)  # 一下子就存储了一个学院的linklist
+            parse_addLink(link, keyname)  # 一下子就存储了一个学院的linklist 通过xml方式
         Myparse(qianzhui, keyname)  # 准备解析 linklist下面的所有链接
-        moveFile.move_linkListTo_Last()  # 解析完了，就将linklist下面的所有文件移到 linkList_Last文件夹下面
-    moveFile.move_csvlistTo_Last()  # 解析完了csvlist里面的链接，应该也要移动一下才对！
-
+        moveFile.move_linkListTo_Last(scholl_name,academy_name)  # 解析完了，就将linklist下面的所有文件移到 linkList_Last文件夹下面
+        moveFile.move_csvlistTo_Last(scholl_name,academy_name)  # 解析完了csvlist里面的链接，应该也要移动一下才对！
+        print("ok")
     # 退出浏览器
     webCon.chrome.quit()

@@ -7,4 +7,8 @@
     <proxyPass>40DDB02952BCEADA</proxyPass>
     <!--下面一个参数是elasticsearch 配置参数-->
     <esdb_host>127.0.0.1</esdb_host>
+    <!--mysql 数据库配置参数-->
+    <mysql_host>127.0.0.1</mysql_host>
+    <mysql_user>root</mysql_user>
+    <mysql_pass>xqweXQWE8</mysql_pass>
 </startconfig>

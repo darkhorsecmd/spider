@@ -5,14 +5,14 @@ import os
 import uuid
 
 
-#使用这个 需要传入一个函数名来 创建对象，依次调用
+# 使用这个 需要传入一个函数名来 创建对象，依次调用
 class Mylog():
     path = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\Log\\"
 
     def __init__(self, name):
         _formater = logging.Formatter('%(asctime)-15s : %(message)s')
         self.logzero = logzero
-        self.logzero.logfile(Mylog.path + str(uuid.uuid1()) + "_" + name + ".log", formatter=_formater,
+        self.logzero.logfile(Mylog.path + name + ".log", formatter=_formater,
                              maxBytes=10000000, backupCount=6)
 
     def debug(self, message):

@@ -2,7 +2,7 @@ from elasticsearch import Elasticsearch
 from xmlUnit import ReadXML
 import os
 
-
+#这个数据存储适用于 nosql
 class DataUnit:
     configFileName = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\\xmlUnit\\config.xml"
     read = ReadXML.ReadXml(configFileName)

@@ -2,6 +2,8 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Test/Test CSV/readme.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/spider/Log/59643ec2-344e-11e9-beb2-acd1b8a68732_MoveFile.log" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/spider/Log/MoveFile.log" charset="GBK" />
     <file url="file://$PROJECT_DIR$/spider/csvUnit/readme.txt" charset="GBK" />
   </component>
 </project>

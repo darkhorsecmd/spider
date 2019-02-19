@@ -1,15 +1,18 @@
 import requests
 import os
+import uuid
 from gooseeker import GsExtractor
 from lxml import etree
 from tools.RandomUserAgent import RandomUserAgent
 from tools.IpAgency import IpAgency
 from chrome import chromes
+from tools.Mylog import Mylog
 
 
 class webCon:
     # chrome启动的慢，所以尽量少启动，作为静态最合适
     chrome = chromes()  # 只会实例化一次
+    mylog = Mylog("WebCon")
 
     def __init__(self):
         # 集搜客提供的API
@@ -33,7 +36,6 @@ class webCon:
         except Exception as e:
             # 最好加一个日志
             print("requests hava some problem:" + str(e) + "try selenium way")
-
             try:
                 # chrome 浏览器方式采集数据
                 data = webCon.chrome.get_html(url=url)
@@ -53,6 +55,7 @@ class webCon:
                     return content
                 except Exception as e2:
                     # 加一个日志操作，warning
+                    webCon.mylog.error(str.encode((str(url) + ":" + str(e2))))
                     print(str.encode((str(url) + ":" + str(e2))))
                     return None
 
