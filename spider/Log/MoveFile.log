@@ -1,1 +1,0 @@
-2019-02-19 22:44:15,255 : move csvlist from E:\19年文件\毕设爬虫\spider\spider\csvUnit\csvlist\东南大学\机械工程学院1.csv to E:\19年文件\毕设爬虫\spider\spider\csvUnit\csvlist_Last\东南大学\机械工程学院1.csv EXCEPT:[Errno 2] No such file or directory: 'E:\\19年文件\\毕设爬虫\\spider\\spider\\csvUnit\\csvlist_Last\\东南大学\\机械工程学院1.csv'
