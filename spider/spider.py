@@ -1,4 +1,4 @@
-from xmlUnit import ReadTreeXML
+from xmlUnit import ReadLinksXML
 from csvUnit import startReadCSV
 from urllib import parse
 from webCon import webCon
@@ -28,7 +28,7 @@ def Myparse(url, key):  # list页面的url可以作为前缀拼凑成完整的�
     PageDetailRule = key + "_detail"  # 每一个教师信息的解析规则，同时也是esdb的doc_type
     # 开始取出 每一个教师的link规则
     linkListPath = os.path.abspath(os.path.dirname(__file__)) + "\\xmlUnit\\linkList"
-    readXmlTree = ReadTreeXML.ReadTreeXml(linkListPath)
+    readXmlTree = ReadLinksXML.ReadTreeXml(linkListPath)
     urlLinkList = readXmlTree.getUrlList()  # linkList 文件夹下的所有文件当中的link 大列表
     for urlIndex in range(len(urlLinkList)):
         detailPageUrl = parse.urljoin(url, urlLinkList[urlIndex])

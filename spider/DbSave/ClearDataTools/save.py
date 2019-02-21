@@ -4,15 +4,15 @@ import threading
 from xmlUnit.ReadXML import ReadXml
 from queue import Queue
 
-class MySqlAsyn(object):
-    ConfigXML_Path = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\\xmlUnit\\config.xml"
+class save(object):
+    ConfigXML_Path = os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))) + "\\xmlUnit\\config.xml"
     readxml = ReadXml(ConfigXML_Path)
 
     def init(self, max_conns=30):
-        self.host = MySqlAsyn.readxml.get_ItemValue("mysql_host")
-        self.database = MySqlAsyn.readxml.get_ItemValue("mysql_dbName")
-        self.user = MySqlAsyn.readxml.get_ItemValue("mysql_user")
-        self.pwd = MySqlAsyn.readxml.get_ItemValue("mysql_pass")
+        self.host = save.readxml.get_ItemValue("mysql_host")
+        self.database = save.readxml.get_ItemValue("mysql_dbName")
+        self.user = save.readxml.get_ItemValue("mysql_user")
+        self.pwd = save.readxml.get_ItemValue("mysql_pass")
         self.idle_conn = Queue()
         self.pool_size = 0
         self.max_conns = max_conns
@@ -34,16 +34,18 @@ class MySqlAsyn(object):
         self.idle_conn.put(conn)
         return res
 
-    def insert(self,):
+
+    def insert_data(self,Info_dict):
+        #这里应该将dict转化为一个合格的插入语句，默认一下子是插入所有数据
         pass
 
 if __name__ == '__main__':
     # 配置数据库
-    ConfigXML_Path = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\\xmlUnit\\config.xml"
+    ConfigXML_Path = os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))) + "\\xmlUnit\\config.xml"
     readxml = ReadXml(ConfigXML_Path)
     print("\n" + readxml.get_ItemValue("mysql_host"))
 
-    path = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))  # E:\19年文件\毕设爬虫\spider\spider
+    path = os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))  # E:\19年文件\毕设爬虫\spider\spider
     detail_path = path + "\\xmlUnit+\\linkList_detail"
     print(detail_path)
 

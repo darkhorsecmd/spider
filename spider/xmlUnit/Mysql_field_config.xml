@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mysqlfield>
     <!-- 院系教师列表页面里面 每一个教师链接的标签名-->
-    <T_link type="教师个人链接">link</T_link>
-    <!-- basic 表名字，type是给人看的，标签值是mysql数据库字段名-->
-    <basic type="姓名">name</basic>
-    <basic type="职称">jobTitle</basic>
-    <basic type="职位">position</basic>
-    <basic type="系别">department</basic>
-    <basic type="办公室">office</basic>
-    <basic type="邮箱">email</basic>
-    <basic type="办公电话">officePhone</basic>
-    <basic type="手机号码">cellphoneNumber</basic>
-    <basic type="研究领域">researchAreas</basic>
-    <basic type="教育背景">eduBackground</basic>
-    <basic type="科研项目">researchProject</basic>
-    <basic type="代表著作">book</basic>
-    <basic type="论文">paper</basic>
-    <basic type="奖项">award</basic>
-    <basic type="社会兼职">socialWork</basic>
+    <T_link type="教师个人链接" table="basic">link</T_link>
+    <!-- filed 表名字，type是给人看的，标签值是mysql数据库字段名-->
+    <filed type="姓名" table="basic">name</filed>
+    <filed type="职称" table="basic">jobTitle</filed>
+    <filed type="职位" table="basic">position</filed>
+    <filed type="系别" table="basic">department</filed>
+    <filed type="办公室" table="basic">office</filed>
+    <filed type="邮箱" table="basic">email</filed>
+    <filed type="办公电话" table="basic">officePhone</filed>
+    <filed type="手机号码" table="basic">cellphoneNumber</filed>
+    <filed type="研究领域" table="basic">researchAreas</filed>
+    <filed type="教育背景" table="basic">eduBackground</filed>
+    <filed type="科研项目" table="basic">researchProject</filed>
+    <filed type="代表著作" table="basic">book</filed>
+    <filed type="论文" table="basic">paper</filed>
+    <filed type="奖项" table="basic">award</filed>
+    <filed type="社会兼职" table="basic">socialWork</filed>
     <!--每一个字段都有可能是脏数据，所以，加一个标记-->
-    <basic type="姓名">wait_name</basic>
-    <basic type="职称">wait_jobTile</basic>
-    <basic type="职位">wait_position</basic>
-    <basic type="系别">wait_department</basic>
-    <basic type="办公室">wait_office</basic>
-    <basic type="邮箱">wait_email</basic>
-    <basic type="办公电话">wait_officePhone</basic>
-    <basic type="手机号码">wait_cellphoneNumber</basic>
-    <basic type="研究领域">wait_researchAreas</basic>
-    <basic type="教育背景">wait_eduBackground</basic>
-    <basic type="科研项目">wait_researchProject</basic>
-    <basic type="代表著作">wait_book</basic>
-    <basic type="论文">wait_paper</basic>
-    <basic type="奖项">wait_award</basic>
-    <basic type="社会兼职">wait_socialWork</basic>
-    <basic type="待解析整个页面">wait_page</basic>
+    <filed type="姓名" table="basic">wait_name</filed>
+    <filed type="职称" table="basic">wait_jobTile</filed>
+    <filed type="职位" table="basic">wait_position</filed>
+    <filed type="系别" table="basic">wait_department</filed>
+    <filed type="办公室" table="basic">wait_office</filed>
+    <filed type="邮箱" table="basic">wait_email</filed>
+    <filed type="办公电话" table="basic">wait_officePhone</filed>
+    <filed type="手机号码" table="basic">wait_cellphoneNumber</filed>
+    <filed type="研究领域" table="basic">wait_researchAreas</filed>
+    <filed type="教育背景" table="basic">wait_eduBackground</filed>
+    <filed type="科研项目" table="basic">wait_researchProject</filed>
+    <filed type="代表著作" table="basic">wait_book</filed>
+    <filed type="论文" table="basic">wait_paper</filed>
+    <filed type="奖项" table="basic">wait_award</filed>
+    <filed type="社会兼职" table="basic">wait_socialWork</filed>
+    <filed type="待解析整个页面" table="basic">wait_page</filed>
 </mysqlfield>

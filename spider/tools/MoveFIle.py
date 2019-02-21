@@ -2,12 +2,20 @@ import os
 import shutil
 from tools.Mylog import Mylog
 
-
+#此方法不具备通用性，专门给爬虫 移动链接
 class MoveFile():
     mylog = Mylog("MoveFile")
 
     def __init__(self):
         self.rootPath = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+
+    def move_EachFileFromlinkList_detail_To_Last(self,detailFilePath):
+        #每调用一次则将  detailFilePath 文件 移动到Last文件夹
+        pass
+
+
+
+
 
     def move_linkListTo_Last(self, school_name, academy_name):
         xmlSrcPath = self.rootPath + "\\xmlUnit\\linkList"
