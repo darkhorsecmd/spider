@@ -1,38 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mysqlfield>
-    <!-- 院系教师列表页面里面 每一个教师链接的标签名-->
-    <T_link type="教师个人链接" table="basic">link</T_link>
     <!-- filed 表名字，type是给人看的，标签值是mysql数据库字段名-->
-    <filed type="姓名" table="basic">name</filed>
-    <filed type="职称" table="basic">jobTitle</filed>
-    <filed type="职位" table="basic">position</filed>
-    <filed type="系别" table="basic">department</filed>
-    <filed type="办公室" table="basic">office</filed>
-    <filed type="邮箱" table="basic">email</filed>
-    <filed type="办公电话" table="basic">officePhone</filed>
-    <filed type="手机号码" table="basic">cellphoneNumber</filed>
-    <filed type="研究领域" table="basic">researchAreas</filed>
-    <filed type="教育背景" table="basic">eduBackground</filed>
-    <filed type="科研项目" table="basic">researchProject</filed>
-    <filed type="代表著作" table="basic">book</filed>
-    <filed type="论文" table="basic">paper</filed>
-    <filed type="奖项" table="basic">award</filed>
-    <filed type="社会兼职" table="basic">socialWork</filed>
-    <!--每一个字段都有可能是脏数据，所以，加一个标记-->
-    <filed type="姓名" table="basic">wait_name</filed>
-    <filed type="职称" table="basic">wait_jobTile</filed>
-    <filed type="职位" table="basic">wait_position</filed>
-    <filed type="系别" table="basic">wait_department</filed>
-    <filed type="办公室" table="basic">wait_office</filed>
-    <filed type="邮箱" table="basic">wait_email</filed>
-    <filed type="办公电话" table="basic">wait_officePhone</filed>
-    <filed type="手机号码" table="basic">wait_cellphoneNumber</filed>
-    <filed type="研究领域" table="basic">wait_researchAreas</filed>
-    <filed type="教育背景" table="basic">wait_eduBackground</filed>
-    <filed type="科研项目" table="basic">wait_researchProject</filed>
-    <filed type="代表著作" table="basic">wait_book</filed>
-    <filed type="论文" table="basic">wait_paper</filed>
-    <filed type="奖项" table="basic">wait_award</filed>
-    <filed type="社会兼职" table="basic">wait_socialWork</filed>
-    <filed type="待解析整个页面" table="basic">wait_page</filed>
+    <!--Spiderinfo 数据库插入需要 Researcherbasicinfo 数据库一定 至少姓名栏目存在，才能生成UUID -->
+    <filed type="爬取的教师URL" table="Spiderinfo">Url</filed>
+    <filed type="爬取时间" table="Spiderinfo">SpiderTime</filed>
+    <filed type="中文姓名" table="Researcherbasicinfo">NameZH</filed>
+    <filed type="出生年/出生年月" table="Researcherbasicinfo">Birthday</filed>
+    <filed type="职称" table="Researcherbasicinfo">ProfessionalTitle</filed>
+    <filed type="学历" table="Researcherbasicinfo">Education</filed>
+    <filed type="学位" table="Researcherbasicinfo">Degree</filed>
+    <filed type="是否硕导" table="Researcherbasicinfo">PhDSupervisor</filed>
+    <filed type="是否博导" table="Researcherbasicinfo">MasterSupervisor</filed>
+    <filed type="人才标签" table="Researcherbasicinfo">TalentTitle</filed>
+    <filed type="机构/学校中文名称" table="Researcherbasicinfo">SchoolNameZh</filed>
+    <filed type="院系中文名称" table="Researcherbasicinfo">DepartmentNameZh</filed>
+    <filed type="Email" table="Researcherbasicinfo">Email</filed>
+    <filed type="固定电话" table="Researcherbasicinfo">Tel</filed>
+    <filed type="手机号码" table="Researcherbasicinfo">MobilePhone</filed>
+    <filed type="通讯地址/办公地点" table="Researcherbasicinfo">Address</filed>
+    <filed type="研究方向" table="Researcherbasicinfo">ResearchField</filed>
+    <filed type="论文" table="Researcherbasicinfo">Paper</filed>
+    <filed type="获奖/荣誉" table="Researcherbasicinfo">Honor</filed>
+    <filed type="项目" table="Researcherbasicinfo">ResearchProject</filed>
+    <filed type="教材/著作" table="Researcherbasicinfo">Publication</filed>
+    <filed type="知识产权" table="Researcherbasicinfo">IntellectualProperty</filed>
+    <filed type="教授课程" table="Researcherbasicinfo">TeachingCourse</filed>
+    <filed type="个人简介" table="Researcherbasicinfo">PersonalProfile</filed>
+    <filed type="参加学术活动" table="Researcherbasicinfo">AcademicActivity</filed>
+    <filed type="个人综合信息" table="Researcherbasicinfo">IntegratedInformation</filed>
+    <filed type="职位" table="Researcherbasicinfo">Postition</filed>
 </mysqlfield>

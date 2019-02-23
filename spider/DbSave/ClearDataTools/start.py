@@ -2,23 +2,12 @@ import os
 from xmlUnit.ReadDetailXML import ReadDetailXML
 from tools.MoveFIle import MoveFile
 from tools.Mylog import Mylog
-from .extract_info import extract_info
-from .save import save
+# from .extract_info import extract_info
+# from .save import save
 from tools.zhengze import zhengze
 
-clear = extract_info()  # 清洗数据对象
-data_save = save()  # 保存数据对象
 clear_log = Mylog("清洗数据日志")
 zhengze = zhengze()
-
-def clearDict(info_dict):
-    try:
-        clear.setDict(info_dict)
-        data = clear.getDict()
-        data_save.insert_data(data)
-    except Exception as e:
-        clear_log.error(str(e))
-
 
 if __name__ == '__main__':
     # 详情文件夹路径
@@ -39,10 +28,8 @@ if __name__ == '__main__':
     for index in range(len(ListFiles)):
         try:
             file_path = detail_path + "\\" + ListFiles[index]  # detail xml文件路径
-            readDetail.setFilePath(file_path,zhengze.getSchollName(ListFiles[index]))  # 设置detail xml文件路径,并开始读文件
-            info_dict = readDetail.get_DetailDict()  # 返回一个dict
-            clearDict(info_dict,)  # 将得到的教师详细信息dict传给clearDict（） 用于清洗前期数据，并直接存入数据库
-            moveFile.move_EachFileFromlinkList_detail_To_Last(
-                file_path)  # 解析好每一个文件则需要将这个文件移动到 linkList_detail_Last 文件夹里面
+            readDetail.setFilePath(file_path, zhengze.getSchollName(ListFiles[index]))  # 设置detail xml文件路径,并开始读文件
+            # moveFile.move_EachFileFromlinkList_detail_To_Last(
+            #     file_path)  # 解析好每一个文件则需要将这个文件移动到 linkList_detail_Last 文件夹里面
         except Exception as e:
             mylog.error(str(e))

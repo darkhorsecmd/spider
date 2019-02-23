@@ -21,8 +21,9 @@ class zhengze():
         return re.search(pattern=telPattern, string=s).group(0)
 
     def getTitle(self, s):
-        pattern = '[(教授)(副教授)(讲师)]'
-        return re.findall(pattern, s)
+        pattern = '[(教授)(副教授)(讲师)]{0,1}'
+        title = "".join( re.findall(pattern, s))
+        return title
 
     def getresearchAreas(self,testSentence):
         result = re.findall("从事\w*研究。*", testSentence)
@@ -58,13 +59,13 @@ if __name__ == '__main__':
 
     手机号码:  13951671420
 
-    职称:  副教授
+    职称:  副教授,讲师
 
     开放咨询时间:  周四 10 am.-12 am.'''
 
     print(zz.getPhoneNum(sentence)[0])
     print(zz.getTelNum(sentence))
-    print(" ".join(zz.getTitle(sentence)))
+    print(zz.getTitle(sentence))
 
 
 

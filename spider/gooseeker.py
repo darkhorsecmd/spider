@@ -19,7 +19,6 @@ class GsExtractor(object):
     configFileName = os.path.abspath(os.path.dirname(__file__)) + "\\xmlUnit\\config.xml"
     readxml = ReadXML.ReadXml(configFileName)
     APIKey = readxml.get_RootAttribute("appkey")
-
     def _init_(self):
         self.xslt = ""
 

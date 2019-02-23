@@ -35,9 +35,12 @@ class save(object):
         return res
 
 
-    def insert_data(self,Info_dict):
+    def insert_data(self,data):
         #这里应该将dict转化为一个合格的插入语句，默认一下子是插入所有数据
-        pass
+        conn = self._get_conn_from_pool()
+        conn.insert(data)
+        self.idle_conn.put(conn)
+
 
 if __name__ == '__main__':
     # 配置数据库
