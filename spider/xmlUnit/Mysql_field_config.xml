@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mysqlfield>
     <!-- filed 表名字，type是给人看的，标签值是mysql数据库字段名-->
-    <!--Spiderinfo 数据库插入需要 Researcherbasicinfo 数据库一定 至少姓名栏目存在，才能生成UUID -->
+    <!--Spiderinfo 数据库插入需要 Researcherbasicinfo 这个Reasear...info数据库一定至少姓名栏目存在，才能生成UUID -->
     <filed type="爬取的教师URL" table="Spiderinfo">Url</filed>
     <filed type="爬取时间" table="Spiderinfo">SpiderTime</filed>
     <filed type="中文姓名" table="Researcherbasicinfo">NameZH</filed>

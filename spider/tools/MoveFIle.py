@@ -9,8 +9,14 @@ class MoveFile():
     def __init__(self):
         self.rootPath = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
-    def move_EachFileFromlinkList_detail_To_Last(self,detailFilePath):
+    def move_EachFileFromlinkList_detail_To_Last(self,detailFilePath,dec):
         #每调用一次则将  detailFilePath 文件 移动到Last文件夹
+        try:
+            if not os.path.exists(dec):  #如果目标文件夹不存在，则创建文件夹
+                os.makedirs(dec)
+            shutil.move(detailFilePath,dec)
+        except Exception as e :
+            MoveFile.mylog.error("try move "+detailFilePath+"cause :"+str(e))
         pass
 
 

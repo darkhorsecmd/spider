@@ -55,16 +55,14 @@ if __name__ == '__main__':
     readcsv = startReadCSV.startReadCSV(csvFilePath)
     # csv 开始读，对象可返回 tuple（key） 和 dict  这里就直接读了csvlist文件夹下的所有大学 分别存了一个list
     readcsv.startReadUrlList()
-    # 实例化一个正则对象
-    zz = zhengze()
 
     # 实例化一个存储到elasticsearch 对象
     # dataUnit = DataUnit()
     #########################################以上为必须要执行的预备动作
     for fileNameIndex in range(len(readcsv.getKeyFileName())):
         keyname = readcsv.getKeyFileName()[fileNameIndex]  # keyname为"学校名_学院名"
-        scholl_name = zz.getSchollName(keyname)  # 获取学校名字 前缀
-        academy_name = zz.getAcademy(keyname)  # 获取学院名字 后缀
+        scholl_name = zhengze.getSchollName(keyname)  # 获取学校名字 前缀
+        academy_name = zhengze.getAcademy(keyname)  # 获取学院名字 后缀
         listlinks = readcsv.getdic()[keyname]
         qianzhui = ""
         for linkIndex in range(len(listlinks)):

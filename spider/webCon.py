@@ -35,7 +35,8 @@ class webCon:
             return content
         except Exception as e:
             # 最好加一个日志
-            print("requests hava some problem:" + str(e) + "try selenium way")
+            webCon.mylog.debug("requests hava some problem:" + str(e))
+            print()
             try:
                 # chrome 浏览器方式采集数据
                 data = webCon.chrome.get_html(url=url)
