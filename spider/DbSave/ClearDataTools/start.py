@@ -3,12 +3,14 @@ from xmlUnit.ReadDetailXML import ReadDetailXML
 from tools.MoveFIle import MoveFile
 from tools.Mylog import Mylog
 from save import save
+from singleSave import singleSave
 from tools.zhengze import zhengze
 
 clear_log = Mylog("清洗数据日志")
 zhengze = zhengze()
-data_inserFun = save()
+# data_inserFun = save()
 
+data_save = singleSave()
 if __name__ == '__main__':
     # 详情文件夹路径
     detail_path = os.path.abspath(
@@ -32,7 +34,7 @@ if __name__ == '__main__':
             Info_Dict = readDetail.get_DetailDict()
             if len(Info_Dict)!=0:
                 #准备处理保存相关数据
-                data_inserFun.insert_data(Info_Dict,readDetail.gettable_dict())
+                data_save.insert_data(Info_Dict,readDetail.gettable_dict())
             else:
                 # Info_Dict 为空，没想好要干啥，先空着
                 pass

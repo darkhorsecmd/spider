@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from RandomUserAgent import RandomUserAgent
 from urllib import parse
 
-def getallurl(url=r'http://www.civil.tsinghua.edu.cn/ce/83.html'):
+def getallurl(url=r'http://history.nju.edu.cn/list.php?fid=11'):
     rd = RandomUserAgent()
     headers = {"User-Agent": rd.get_RanDomAgent()}
     r = requests.get(url=url,headers=headers)

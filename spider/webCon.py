@@ -22,25 +22,24 @@ class webCon:
         self.Ipagency = IpAgency()
 
     def con_ThenGetContent(self, url, rule):
-        rd = RandomUserAgent()
-        headers = {"User-Agent": rd.get_RanDomAgent()}
         try:
-            # requests 代理方式采集数据
-            data = requests.get(url=url, headers=headers, timeout=500, proxies=self.Ipagency.getIpProxy()).text
-            # data = requests.get(url=url, headers=headers,timeout=500).text  #不用代理方式
+            # chrome 浏览器方式采集数据
+            data = webCon.chrome.get_html(url=url)
             doc = etree.HTML(data)
-            # doc = etree.HTML(conn.read())
             self.extra.setXsltFromAPI(theme=rule)  # 获取规则文件，并读取
             content = self.extra.extract(doc)  # 更具xslt 解析的内容，xml 字节格式
             return content
         except Exception as e:
             # 最好加一个日志
-            webCon.mylog.debug("requests hava some problem:" + str(e))
-            print()
+            webCon.mylog.debug("chrome hava some problem:" + str(e))
+            rd = RandomUserAgent()
+            headers = {"User-Agent": rd.get_RanDomAgent()}
             try:
-                # chrome 浏览器方式采集数据
-                data = webCon.chrome.get_html(url=url)
+                # requests 代理方式采集数据
+                data = requests.get(url=url, headers=headers, timeout=500, proxies=self.Ipagency.getIpProxy()).text
+                # data = requests.get(url=url, headers=headers,timeout=500).text  #不用代理方式
                 doc = etree.HTML(data)
+                # doc = etree.HTML(conn.read())
                 self.extra.setXsltFromAPI(theme=rule)  # 获取规则文件，并读取
                 content = self.extra.extract(doc)  # 更具xslt 解析的内容，xml 字节格式
                 return content

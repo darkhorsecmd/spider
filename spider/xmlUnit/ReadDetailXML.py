@@ -54,7 +54,7 @@ class ReadDetailXML:
                     0].data.strip().replace(' ', ')')
                 try:
                     # 有可能字段会在编程或在任意时间段误操作，捕获一下很必要
-                    self.detail_dict[key] = "".join(value.split())
+                    self.detail_dict[key] = "".join(value.split())  #join操作是去掉所有HTML 空格符 制表符
                 except Exception as e:
                     mylog.error(self.path + "--" + key + ":" + str(e))
             except IndexError as d:
